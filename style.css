@@ -1,0 +1,22 @@
+body {
+  background-color: rgba(2, 30, 2, 0.671);
+}
+
+tr,
+td,
+th {
+  border: 3px solid yellow;
+  padding: 10px;
+}
+
+table {
+  color: rgb(28, 2, 28);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin: 0 auto;
+  max-width: 100%;
+  border: 1px solid;
+  border-collapse: collapse;
+}
+#info {
+  width: 500px;
+}

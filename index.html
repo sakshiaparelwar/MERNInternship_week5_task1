@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task1</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="display">
+      <table>
+        <thead>
+          <tr>
+            <th>Places Names</th>
+            <th id="info">Places Info</th>
+            <th>Places Images</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <script>
+      fetch("https://api.npoint.io/7bbd3a59c401f616bb89")
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+
+          const names = Object.values(data);
+          // console.log(names[0]);
+          const tbody = document.getElementById("tbody");
+          const allnames = names[0].map((place) => {
+            const row = document.createElement("tr");
+
+            const namecell = document.createElement("td");
+            namecell.textContent = place.name;
+            row.appendChild(namecell);
+
+            const infocell = document.createElement("td");
+            infocell.textContent = place.info;
+            row.appendChild(infocell);
+
+            const imgcell = document.createElement("td");
+            const image = document.createElement("img");
+            image.setAttribute("src", `${place.image}`);
+            image.setAttribute("height", "200");
+            image.setAttribute("width", "200");
+            imgcell.appendChild(image);
+            row.appendChild(imgcell);
+
+            tbody.appendChild(row);
+          });
+          // console.log(allnames);
+          // document.querySelector("td").innerHTML = allnames;
+        })
+        .catch((err) => console.log(err));
+    </script>
+  </body>
+</html>
